@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+                        http://www.springframework.org/schema/context  
+                        http://www.springframework.org/schema/context/spring-context-4.2.xsd
+                        http://www.springframework.org/schema/aop
+                        http://www.springframework.org/schema/aop/spring-aop.xsd
+                        http://www.springframework.org/schema/mvc
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
+                        
+
+    <aop:aspectj-autoproxy expose-proxy="true" proxy-target-class="true"/>
+	<!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
+	<context:component-scan base-package="com.cn.tianxia.controller" />
+	
+	<bean class="com.cn.tianxia.common.CustomHandlerExceptionResolver"/>
+	 
+	 <mvc:annotation-driven>  
+        <mvc:message-converters>    
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">  
+                <constructor-arg value="UTF-8" />  
+                <!-- 避免出现乱码 -->    
+                <property name="supportedMediaTypes">    
+                    <list>    
+                        <value>text/plain;charset=UTF-8</value>    
+                    </list>    
+                </property>  
+            </bean>  
+        <!-- 处理responseBody 里面日期类型 -->    
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">    
+                <property name="objectMapper">    
+                    <bean class="com.fasterxml.jackson.databind.ObjectMapper">    
+                        <property name="dateFormat">    
+                            <bean class="java.text.SimpleDateFormat">    
+                                <constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss" />    
+                            </bean>    
+                        </property>    
+                    </bean>    
+                </property>    
+            </bean>  
+        </mvc:message-converters>   
+</mvc:annotation-driven>  
+	
+		 <!-- 扫描注解Bean -->
+    <context:component-scan base-package="com.cn.tianxia.service">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    
+    <context:component-scan base-package="com.cn.tianxia.ws" />
+	
+	<context:annotation-config />
+	<context:spring-configured />
+	
+ 	<!-- 类型转换及数据格式化 -->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>	
+	
+	
+	
+	
+	<!--避免IE执行AJAX时，返回JSON出现下载文件 -->
+	<bean id="mappingJacksonHttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<!-- 	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" /> -->
+	<property name="prefix" value="/page/" />
+	<property name="suffix" value=".jsp" />
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="mappingJacksonHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 配置文件上传 -->
+	<bean id="multipartResolver"  
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+        <property name="defaultEncoding" value="utf-8" />  
+        <property name="maxUploadSize" value="604800" />  
+        <property name="maxInMemorySize" value="40960" />  
+    </bean>  
+    
+    <!-- 处理器映射器HandlerMapping -->  
+        <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>  
+          
+        <!-- 处理器设配器HandlerAdapter -->  
+        <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">  
+            <property name="messageConverters">  
+                <list>  
+                    <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>  
+                </list>  
+            </property>  
+        </bean>  
+        
+        <mvc:interceptors>  
+            <!-- 多个拦截器，顺序执行 -->  
+            <mvc:interceptor>  
+                <mvc:mapping path="/**"/>  
+                <bean class="com.cn.tianxia.util.LoginInterceptor">
+                	<property name="excludedUrls">
+					<list>
+						<value>LoginMap/getUserList.do</value>
+						<value>LoginMap/shotOff.do</value>
+						<value>bankingNotify.do</value>
+						<value>scanPayNotify.do</value>
+						<value>ysePayCallBack</value>
+						<value>Notify.do</value>
+						<value>integral/goodsType</value>
+						<value>integral/goodsList</value>
+						<value>integral/typeSearch</value>
+						<value>integral/goodsDetails</value>
+						<value>integral/rankingList</value>
+						<value>LoginMap/update.do</value>
+						<value>PSGame/auth.do</value>
+						<value>User/asyncVerify</value>
+						<value>login</value>
+						<value>User/register</value>
+						<value>Mobile/register.do</value>
+						<value>logout</value>
+						<value>checklogin.do</value>
+						<value>checkcookie</value>
+						<value>getToken</value>
+						<value>validateCode</value>
+						<value>webcom.do</value>
+						<value>gonggao.do</value>
+						<value>newGonggao.do</value>
+						<value>webcomconfig.do</value>
+						<value>mobleWebcomConfig.do</value>
+						<value>DemoPlay</value>
+						<value>/bg</value>
+						<value>/sendRegirstCode.do</value>
+						<value>/sendLoginCode.do</value>
+						<value>/sendRegirstCode.do</value>
+						<value>/LuckyDraw/getStatus.do</value>
+						<value>/LuckyDraw/getPrize.do</value>
+						<value>/User/getContactInfo</value>
+						<value>/game/getGameList</value>
+						<value>/PlatformPay/scanPay</value>
+					</list>
+				</property>
+                </bean>  
+            </mvc:interceptor>  
+        </mvc:interceptors>
+</beans>

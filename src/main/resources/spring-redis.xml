@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans      
+                        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd      
+                        http://www.springframework.org/schema/context      
+                        http://www.springframework.org/schema/context/spring-context-4.2.xsd      
+                        http://www.springframework.org/schema/mvc      
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd  
+                        http://www.springframework.org/schema/cache   
+                        http://www.springframework.org/schema/cache/spring-cache-4.2.xsd">
+
+	<context:annotation-config />
+	<!-- 引入配置文件 -->
+	<context:property-placeholder location="classpath:conf/*.properties" />
+	<!-- 连接池配置，这个bean是下面jedisCluster的一个属 -->
+	<bean id="genericObjectPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxTotal" value="${redis.maxTotal}" />
+		<property name="maxIdle" value="${redis.maxIdle}" />
+		<property name="maxWaitMillis" value="${redis.maxWaitMillis}" />
+		<property name="testOnBorrow" value="${redis.testOnBorrow}" />
+	</bean>
+	<!-- 连接节点配置，这个bean也是下面jedisCluster的一个属 -->
+	<bean id="nodes1" class="redis.clients.jedis.HostAndPort">
+		<constructor-arg name="host" value="${redis.cluster.node.host1}" />
+		<constructor-arg name="port" value="${redis.cluster.node.port1}" />
+	</bean>
+	<bean id="nodes2" class="redis.clients.jedis.HostAndPort">
+		<constructor-arg name="host" value="${redis.cluster.node.host2}" />
+		<constructor-arg name="port" value="${redis.cluster.node.port2}" />
+	</bean>
+	<bean id="nodes3" class="redis.clients.jedis.HostAndPort">
+		<constructor-arg name="host" value="${redis.cluster.node.host3}" />
+		<constructor-arg name="port" value="${redis.cluster.node.port3}" />
+	</bean>
+	<bean id="nodes4" class="redis.clients.jedis.HostAndPort">
+		<constructor-arg name="host" value="${redis.cluster.node.host4}" />
+		<constructor-arg name="port" value="${redis.cluster.node.port4}" />
+	</bean>
+	<bean id="nodes5" class="redis.clients.jedis.HostAndPort">
+		<constructor-arg name="host" value="${redis.cluster.node.host5}" />
+		<constructor-arg name="port" value="${redis.cluster.node.port5}" />
+	</bean>
+	<bean id="nodes6" class="redis.clients.jedis.HostAndPort">
+		<constructor-arg name="host" value="${redis.cluster.node.host6}" />
+		<constructor-arg name="port" value="${redis.cluster.node.port6}" />
+	</bean>
+	<!-- 集群配置，使用构造方法注入的方式，想改其他可以自己查看构造方法，自己 -->
+	<bean id="jedisCluster" class="redis.clients.jedis.JedisCluster">
+		<constructor-arg name="jedisClusterNode">
+			<set>
+				<ref bean="nodes1" />
+				<ref bean="nodes2" />
+				<ref bean="nodes3" />
+				<ref bean="nodes4" />
+				<ref bean="nodes5" />
+				<ref bean="nodes6" />
+			</set>
+		</constructor-arg>
+		<constructor-arg name="connectionTimeout" value="300" />
+		<constructor-arg name="soTimeout" value="300" />
+		<constructor-arg name="maxAttempts" value="10" />
+		<constructor-arg name="password" value="${redis.password}" />
+		<constructor-arg name="poolConfig" ref="genericObjectPoolConfig"></constructor-arg>
+	</bean>
+</beans>

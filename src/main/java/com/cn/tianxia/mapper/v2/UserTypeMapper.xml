@@ -1,0 +1,980 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.tianxia.dao.v2.UserTypeDao" >
+  <resultMap id="BaseResultMap" type="com.cn.tianxia.entity.v2.UserTypeEntity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="typename" property="typename" jdbcType="VARCHAR" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="rmk" property="rmk" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="isDefault" property="isdefault" jdbcType="VARCHAR" />
+    <result column="p_cg" property="pCg" jdbcType="REAL" />
+    <result column="p_ag" property="pAg" jdbcType="REAL" />
+    <result column="p_shenbogame" property="pShenbogame" jdbcType="REAL" />
+    <result column="p_shenbo" property="pShenbo" jdbcType="REAL" />
+    <result column="p_ab" property="pAb" jdbcType="REAL" />
+    <result column="p_ds" property="pDs" jdbcType="REAL" />
+    <result column="p_og" property="pOg" jdbcType="REAL" />
+    <result column="p_bbin" property="pBbin" jdbcType="REAL" />
+    <result column="p_bbingame" property="pBbingame" jdbcType="REAL" />
+    <result column="p_mg" property="pMg" jdbcType="REAL" />
+    <result column="p_pt" property="pPt" jdbcType="REAL" />
+    <result column="p_haba" property="pHaba" jdbcType="REAL" />
+    <result column="p_ig" property="pIg" jdbcType="REAL" />
+    <result column="p_hg" property="pHg" jdbcType="REAL" />
+    <result column="p_ggby" property="pGgby" jdbcType="REAL" />
+    <result column="p_bgvideo" property="pBgvideo" jdbcType="REAL" />
+    <result column="p_bglottery" property="pBglottery" jdbcType="REAL" />
+    <result column="bankCard_id" property="bankcardId" jdbcType="INTEGER" />
+    <result column="alipay_id" property="alipayId" jdbcType="VARCHAR" />
+    <result column="wechat_id" property="wechatId" jdbcType="VARCHAR" />
+    <result column="tenPay_id" property="tenpayId" jdbcType="VARCHAR" />
+    <result column="onlinepay_id" property="onlinepayId" jdbcType="VARCHAR" />
+    <result column="integral_ratio" property="integralRatio" jdbcType="REAL" />
+    <result column="c_integral_ratio" property="cIntegralRatio" jdbcType="REAL" />
+    <result column="p_hkig" property="pHkig" jdbcType="REAL" />
+    <result column="p_vr" property="pVr" jdbcType="REAL" />
+    <result column="p_jf" property="pJf" jdbcType="REAL" />
+    <result column="p_jfcp" property="pJfcp" jdbcType="REAL" />
+    <result column="p_yorplay" property="pYorplay" jdbcType="REAL" />
+    <result column="p_kyqp" property="pKyqp" jdbcType="REAL" />
+    <result column="p_spta" property="pSpta" jdbcType="REAL" />
+    <result column="p_vgqp" property="pVgqp" jdbcType="REAL" />
+    <result column="payment_channel" property="paymentChannel" jdbcType="VARCHAR" />
+    <result column="jf_agsx" property="jfAgsx" jdbcType="REAL" />
+    <result column="jf_agby" property="jfAgby" jdbcType="REAL" />
+    <result column="jf_bbsx" property="jfBbsx" jdbcType="REAL" />
+    <result column="jf_bbdz" property="jfBbdz" jdbcType="REAL" />
+    <result column="jf_cgsx" property="jfCgsx" jdbcType="REAL" />
+    <result column="jf_dssx" property="jfDssx" jdbcType="REAL" />
+    <result column="jf_ggby" property="jfGgby" jdbcType="REAL" />
+    <result column="jf_hbdz" property="jfHbdz" jdbcType="REAL" />
+    <result column="jf_hgty" property="jfHgty" jdbcType="REAL" />
+    <result column="jf_igctc" property="jfIgctc" jdbcType="REAL" />
+    <result column="jf_mgdz" property="jfMgdz" jdbcType="REAL" />
+    <result column="jf_obsx" property="jfObsx" jdbcType="REAL" />
+    <result column="jf_ogsx" property="jfOgsx" jdbcType="REAL" />
+    <result column="jf_ptdz" property="jfPtdz" jdbcType="REAL" />
+    <result column="jf_sbsx" property="jfSbsx" jdbcType="REAL" />
+    <result column="jf_sbdz" property="jfSbdz" jdbcType="REAL" />
+    <result column="jf_igxgc" property="jfIgxgc" jdbcType="REAL" />
+    <result column="jf_igpjctc" property="jfIgpjctc" jdbcType="REAL" />
+    <result column="jf_igpjxgc" property="jfIgpjxgc" jdbcType="REAL" />
+    <result column="jf_vrcp" property="jfVrcp" jdbcType="REAL" />
+    <result column="jf_yoplaydz" property="jfYoplaydz" jdbcType="REAL" />
+    <result column="jf_kyqp" property="jfKyqp" jdbcType="REAL" />
+    <result column="jf_spta" property="jfSpta" jdbcType="REAL" />
+    <result column="jf_vgqp" property="jfVgqp" jdbcType="REAL" />
+    <result column="p_gycp" property="pGycp" jdbcType="REAL" />
+    <result column="jf_gycp" property="jfGycp" jdbcType="REAL" />
+    <result column="p_ps" property="pPs" jdbcType="REAL" />
+    <result column="jf_ps" property="jfPs" jdbcType="REAL" />
+    <result column="p_nb" property="pNb" jdbcType="REAL" />
+    <result column="jf_nb" property="jfNb" jdbcType="REAL" />
+    <result column="p_lyqp" property="pLyqp" jdbcType="REAL" />
+    <result column="jf_lyqp" property="jfLyqp" jdbcType="REAL" />
+    <result column="p_jdb" property="pJdb" jdbcType="REAL" />
+    <result column="jf_jdb" property="jfJdb" jdbcType="REAL" />
+    <result column="p_sw" property="pSw" jdbcType="REAL" />
+    <result column="jf_sw" property="jfSw" jdbcType="REAL" />
+    <result column="p_ibc" property="pIbc" jdbcType="REAL" />
+    <result column="jf_ibc" property="jfIbc" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cid, typename, updatetime, rmk, status, isDefault, p_cg, p_ag, p_shenbogame, 
+    p_shenbo, p_ab, p_ds, p_og, p_bbin, p_bbingame, p_mg, p_pt, p_haba, p_ig, p_hg, p_ggby, 
+    p_bgvideo, p_bglottery, bankCard_id, alipay_id, wechat_id, tenPay_id, onlinepay_id, 
+    integral_ratio, c_integral_ratio, p_hkig, p_vr, p_jf, p_jfcp, p_yorplay, p_kyqp, 
+    p_spta, p_vgqp, payment_channel, jf_agsx, jf_agby, jf_bbsx, jf_bbdz, jf_cgsx, jf_dssx, 
+    jf_ggby, jf_hbdz, jf_hgty, jf_igctc, jf_mgdz, jf_obsx, jf_ogsx, jf_ptdz, jf_sbsx, 
+    jf_sbdz, jf_igxgc, jf_igpjctc, jf_igpjxgc, jf_vrcp, jf_yoplaydz, jf_kyqp, jf_spta, 
+    jf_vgqp, p_gycp, jf_gycp, p_ps, jf_ps, p_nb, jf_nb, p_lyqp, jf_lyqp, p_jdb, jf_jdb, 
+    p_sw, jf_sw, p_ibc, jf_ibc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_type
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_user_type
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.tianxia.entity.v2.UserTypeEntity" >
+    insert into t_user_type (id, cid, typename, 
+      updatetime, rmk, status, 
+      isDefault, p_cg, p_ag, p_shenbogame, 
+      p_shenbo, p_ab, p_ds, p_og, 
+      p_bbin, p_bbingame, p_mg, p_pt, 
+      p_haba, p_ig, p_hg, p_ggby, 
+      p_bgvideo, p_bglottery, bankCard_id, 
+      alipay_id, wechat_id, tenPay_id, 
+      onlinepay_id, integral_ratio, c_integral_ratio, 
+      p_hkig, p_vr, p_jf, p_jfcp, 
+      p_yorplay, p_kyqp, p_spta, p_vgqp, 
+      payment_channel, jf_agsx, jf_agby, 
+      jf_bbsx, jf_bbdz, jf_cgsx, jf_dssx, 
+      jf_ggby, jf_hbdz, jf_hgty, jf_igctc, 
+      jf_mgdz, jf_obsx, jf_ogsx, jf_ptdz, 
+      jf_sbsx, jf_sbdz, jf_igxgc, jf_igpjctc, 
+      jf_igpjxgc, jf_vrcp, jf_yoplaydz, 
+      jf_kyqp, jf_spta, jf_vgqp, p_gycp, 
+      jf_gycp, p_ps, jf_ps, p_nb, 
+      jf_nb, p_lyqp, jf_lyqp, p_jdb, 
+      jf_jdb, p_sw, jf_sw, p_ibc, 
+      jf_ibc)
+    values (#{id,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{typename,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{rmk,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, 
+      #{isdefault,jdbcType=VARCHAR}, #{pCg,jdbcType=REAL}, #{pAg,jdbcType=REAL}, #{pShenbogame,jdbcType=REAL}, 
+      #{pShenbo,jdbcType=REAL}, #{pAb,jdbcType=REAL}, #{pDs,jdbcType=REAL}, #{pOg,jdbcType=REAL}, 
+      #{pBbin,jdbcType=REAL}, #{pBbingame,jdbcType=REAL}, #{pMg,jdbcType=REAL}, #{pPt,jdbcType=REAL}, 
+      #{pHaba,jdbcType=REAL}, #{pIg,jdbcType=REAL}, #{pHg,jdbcType=REAL}, #{pGgby,jdbcType=REAL}, 
+      #{pBgvideo,jdbcType=REAL}, #{pBglottery,jdbcType=REAL}, #{bankcardId,jdbcType=INTEGER}, 
+      #{alipayId,jdbcType=VARCHAR}, #{wechatId,jdbcType=VARCHAR}, #{tenpayId,jdbcType=VARCHAR}, 
+      #{onlinepayId,jdbcType=VARCHAR}, #{integralRatio,jdbcType=REAL}, #{cIntegralRatio,jdbcType=REAL}, 
+      #{pHkig,jdbcType=REAL}, #{pVr,jdbcType=REAL}, #{pJf,jdbcType=REAL}, #{pJfcp,jdbcType=REAL}, 
+      #{pYorplay,jdbcType=REAL}, #{pKyqp,jdbcType=REAL}, #{pSpta,jdbcType=REAL}, #{pVgqp,jdbcType=REAL}, 
+      #{paymentChannel,jdbcType=VARCHAR}, #{jfAgsx,jdbcType=REAL}, #{jfAgby,jdbcType=REAL}, 
+      #{jfBbsx,jdbcType=REAL}, #{jfBbdz,jdbcType=REAL}, #{jfCgsx,jdbcType=REAL}, #{jfDssx,jdbcType=REAL}, 
+      #{jfGgby,jdbcType=REAL}, #{jfHbdz,jdbcType=REAL}, #{jfHgty,jdbcType=REAL}, #{jfIgctc,jdbcType=REAL}, 
+      #{jfMgdz,jdbcType=REAL}, #{jfObsx,jdbcType=REAL}, #{jfOgsx,jdbcType=REAL}, #{jfPtdz,jdbcType=REAL}, 
+      #{jfSbsx,jdbcType=REAL}, #{jfSbdz,jdbcType=REAL}, #{jfIgxgc,jdbcType=REAL}, #{jfIgpjctc,jdbcType=REAL}, 
+      #{jfIgpjxgc,jdbcType=REAL}, #{jfVrcp,jdbcType=REAL}, #{jfYoplaydz,jdbcType=REAL}, 
+      #{jfKyqp,jdbcType=REAL}, #{jfSpta,jdbcType=REAL}, #{jfVgqp,jdbcType=REAL}, #{pGycp,jdbcType=REAL}, 
+      #{jfGycp,jdbcType=REAL}, #{pPs,jdbcType=REAL}, #{jfPs,jdbcType=REAL}, #{pNb,jdbcType=REAL}, 
+      #{jfNb,jdbcType=REAL}, #{pLyqp,jdbcType=REAL}, #{jfLyqp,jdbcType=REAL}, #{pJdb,jdbcType=REAL}, 
+      #{jfJdb,jdbcType=REAL}, #{pSw,jdbcType=REAL}, #{jfSw,jdbcType=REAL}, #{pIbc,jdbcType=REAL}, 
+      #{jfIbc,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.tianxia.entity.v2.UserTypeEntity" >
+    insert into t_user_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="typename != null" >
+        typename,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="rmk != null" >
+        rmk,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="isdefault != null" >
+        isDefault,
+      </if>
+      <if test="pCg != null" >
+        p_cg,
+      </if>
+      <if test="pAg != null" >
+        p_ag,
+      </if>
+      <if test="pShenbogame != null" >
+        p_shenbogame,
+      </if>
+      <if test="pShenbo != null" >
+        p_shenbo,
+      </if>
+      <if test="pAb != null" >
+        p_ab,
+      </if>
+      <if test="pDs != null" >
+        p_ds,
+      </if>
+      <if test="pOg != null" >
+        p_og,
+      </if>
+      <if test="pBbin != null" >
+        p_bbin,
+      </if>
+      <if test="pBbingame != null" >
+        p_bbingame,
+      </if>
+      <if test="pMg != null" >
+        p_mg,
+      </if>
+      <if test="pPt != null" >
+        p_pt,
+      </if>
+      <if test="pHaba != null" >
+        p_haba,
+      </if>
+      <if test="pIg != null" >
+        p_ig,
+      </if>
+      <if test="pHg != null" >
+        p_hg,
+      </if>
+      <if test="pGgby != null" >
+        p_ggby,
+      </if>
+      <if test="pBgvideo != null" >
+        p_bgvideo,
+      </if>
+      <if test="pBglottery != null" >
+        p_bglottery,
+      </if>
+      <if test="bankcardId != null" >
+        bankCard_id,
+      </if>
+      <if test="alipayId != null" >
+        alipay_id,
+      </if>
+      <if test="wechatId != null" >
+        wechat_id,
+      </if>
+      <if test="tenpayId != null" >
+        tenPay_id,
+      </if>
+      <if test="onlinepayId != null" >
+        onlinepay_id,
+      </if>
+      <if test="integralRatio != null" >
+        integral_ratio,
+      </if>
+      <if test="cIntegralRatio != null" >
+        c_integral_ratio,
+      </if>
+      <if test="pHkig != null" >
+        p_hkig,
+      </if>
+      <if test="pVr != null" >
+        p_vr,
+      </if>
+      <if test="pJf != null" >
+        p_jf,
+      </if>
+      <if test="pJfcp != null" >
+        p_jfcp,
+      </if>
+      <if test="pYorplay != null" >
+        p_yorplay,
+      </if>
+      <if test="pKyqp != null" >
+        p_kyqp,
+      </if>
+      <if test="pSpta != null" >
+        p_spta,
+      </if>
+      <if test="pVgqp != null" >
+        p_vgqp,
+      </if>
+      <if test="paymentChannel != null" >
+        payment_channel,
+      </if>
+      <if test="jfAgsx != null" >
+        jf_agsx,
+      </if>
+      <if test="jfAgby != null" >
+        jf_agby,
+      </if>
+      <if test="jfBbsx != null" >
+        jf_bbsx,
+      </if>
+      <if test="jfBbdz != null" >
+        jf_bbdz,
+      </if>
+      <if test="jfCgsx != null" >
+        jf_cgsx,
+      </if>
+      <if test="jfDssx != null" >
+        jf_dssx,
+      </if>
+      <if test="jfGgby != null" >
+        jf_ggby,
+      </if>
+      <if test="jfHbdz != null" >
+        jf_hbdz,
+      </if>
+      <if test="jfHgty != null" >
+        jf_hgty,
+      </if>
+      <if test="jfIgctc != null" >
+        jf_igctc,
+      </if>
+      <if test="jfMgdz != null" >
+        jf_mgdz,
+      </if>
+      <if test="jfObsx != null" >
+        jf_obsx,
+      </if>
+      <if test="jfOgsx != null" >
+        jf_ogsx,
+      </if>
+      <if test="jfPtdz != null" >
+        jf_ptdz,
+      </if>
+      <if test="jfSbsx != null" >
+        jf_sbsx,
+      </if>
+      <if test="jfSbdz != null" >
+        jf_sbdz,
+      </if>
+      <if test="jfIgxgc != null" >
+        jf_igxgc,
+      </if>
+      <if test="jfIgpjctc != null" >
+        jf_igpjctc,
+      </if>
+      <if test="jfIgpjxgc != null" >
+        jf_igpjxgc,
+      </if>
+      <if test="jfVrcp != null" >
+        jf_vrcp,
+      </if>
+      <if test="jfYoplaydz != null" >
+        jf_yoplaydz,
+      </if>
+      <if test="jfKyqp != null" >
+        jf_kyqp,
+      </if>
+      <if test="jfSpta != null" >
+        jf_spta,
+      </if>
+      <if test="jfVgqp != null" >
+        jf_vgqp,
+      </if>
+      <if test="pGycp != null" >
+        p_gycp,
+      </if>
+      <if test="jfGycp != null" >
+        jf_gycp,
+      </if>
+      <if test="pPs != null" >
+        p_ps,
+      </if>
+      <if test="jfPs != null" >
+        jf_ps,
+      </if>
+      <if test="pNb != null" >
+        p_nb,
+      </if>
+      <if test="jfNb != null" >
+        jf_nb,
+      </if>
+      <if test="pLyqp != null" >
+        p_lyqp,
+      </if>
+      <if test="jfLyqp != null" >
+        jf_lyqp,
+      </if>
+      <if test="pJdb != null" >
+        p_jdb,
+      </if>
+      <if test="jfJdb != null" >
+        jf_jdb,
+      </if>
+      <if test="pSw != null" >
+        p_sw,
+      </if>
+      <if test="jfSw != null" >
+        jf_sw,
+      </if>
+      <if test="pIbc != null" >
+        p_ibc,
+      </if>
+      <if test="jfIbc != null" >
+        jf_ibc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="typename != null" >
+        #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rmk != null" >
+        #{rmk,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="isdefault != null" >
+        #{isdefault,jdbcType=VARCHAR},
+      </if>
+      <if test="pCg != null" >
+        #{pCg,jdbcType=REAL},
+      </if>
+      <if test="pAg != null" >
+        #{pAg,jdbcType=REAL},
+      </if>
+      <if test="pShenbogame != null" >
+        #{pShenbogame,jdbcType=REAL},
+      </if>
+      <if test="pShenbo != null" >
+        #{pShenbo,jdbcType=REAL},
+      </if>
+      <if test="pAb != null" >
+        #{pAb,jdbcType=REAL},
+      </if>
+      <if test="pDs != null" >
+        #{pDs,jdbcType=REAL},
+      </if>
+      <if test="pOg != null" >
+        #{pOg,jdbcType=REAL},
+      </if>
+      <if test="pBbin != null" >
+        #{pBbin,jdbcType=REAL},
+      </if>
+      <if test="pBbingame != null" >
+        #{pBbingame,jdbcType=REAL},
+      </if>
+      <if test="pMg != null" >
+        #{pMg,jdbcType=REAL},
+      </if>
+      <if test="pPt != null" >
+        #{pPt,jdbcType=REAL},
+      </if>
+      <if test="pHaba != null" >
+        #{pHaba,jdbcType=REAL},
+      </if>
+      <if test="pIg != null" >
+        #{pIg,jdbcType=REAL},
+      </if>
+      <if test="pHg != null" >
+        #{pHg,jdbcType=REAL},
+      </if>
+      <if test="pGgby != null" >
+        #{pGgby,jdbcType=REAL},
+      </if>
+      <if test="pBgvideo != null" >
+        #{pBgvideo,jdbcType=REAL},
+      </if>
+      <if test="pBglottery != null" >
+        #{pBglottery,jdbcType=REAL},
+      </if>
+      <if test="bankcardId != null" >
+        #{bankcardId,jdbcType=INTEGER},
+      </if>
+      <if test="alipayId != null" >
+        #{alipayId,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatId != null" >
+        #{wechatId,jdbcType=VARCHAR},
+      </if>
+      <if test="tenpayId != null" >
+        #{tenpayId,jdbcType=VARCHAR},
+      </if>
+      <if test="onlinepayId != null" >
+        #{onlinepayId,jdbcType=VARCHAR},
+      </if>
+      <if test="integralRatio != null" >
+        #{integralRatio,jdbcType=REAL},
+      </if>
+      <if test="cIntegralRatio != null" >
+        #{cIntegralRatio,jdbcType=REAL},
+      </if>
+      <if test="pHkig != null" >
+        #{pHkig,jdbcType=REAL},
+      </if>
+      <if test="pVr != null" >
+        #{pVr,jdbcType=REAL},
+      </if>
+      <if test="pJf != null" >
+        #{pJf,jdbcType=REAL},
+      </if>
+      <if test="pJfcp != null" >
+        #{pJfcp,jdbcType=REAL},
+      </if>
+      <if test="pYorplay != null" >
+        #{pYorplay,jdbcType=REAL},
+      </if>
+      <if test="pKyqp != null" >
+        #{pKyqp,jdbcType=REAL},
+      </if>
+      <if test="pSpta != null" >
+        #{pSpta,jdbcType=REAL},
+      </if>
+      <if test="pVgqp != null" >
+        #{pVgqp,jdbcType=REAL},
+      </if>
+      <if test="paymentChannel != null" >
+        #{paymentChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="jfAgsx != null" >
+        #{jfAgsx,jdbcType=REAL},
+      </if>
+      <if test="jfAgby != null" >
+        #{jfAgby,jdbcType=REAL},
+      </if>
+      <if test="jfBbsx != null" >
+        #{jfBbsx,jdbcType=REAL},
+      </if>
+      <if test="jfBbdz != null" >
+        #{jfBbdz,jdbcType=REAL},
+      </if>
+      <if test="jfCgsx != null" >
+        #{jfCgsx,jdbcType=REAL},
+      </if>
+      <if test="jfDssx != null" >
+        #{jfDssx,jdbcType=REAL},
+      </if>
+      <if test="jfGgby != null" >
+        #{jfGgby,jdbcType=REAL},
+      </if>
+      <if test="jfHbdz != null" >
+        #{jfHbdz,jdbcType=REAL},
+      </if>
+      <if test="jfHgty != null" >
+        #{jfHgty,jdbcType=REAL},
+      </if>
+      <if test="jfIgctc != null" >
+        #{jfIgctc,jdbcType=REAL},
+      </if>
+      <if test="jfMgdz != null" >
+        #{jfMgdz,jdbcType=REAL},
+      </if>
+      <if test="jfObsx != null" >
+        #{jfObsx,jdbcType=REAL},
+      </if>
+      <if test="jfOgsx != null" >
+        #{jfOgsx,jdbcType=REAL},
+      </if>
+      <if test="jfPtdz != null" >
+        #{jfPtdz,jdbcType=REAL},
+      </if>
+      <if test="jfSbsx != null" >
+        #{jfSbsx,jdbcType=REAL},
+      </if>
+      <if test="jfSbdz != null" >
+        #{jfSbdz,jdbcType=REAL},
+      </if>
+      <if test="jfIgxgc != null" >
+        #{jfIgxgc,jdbcType=REAL},
+      </if>
+      <if test="jfIgpjctc != null" >
+        #{jfIgpjctc,jdbcType=REAL},
+      </if>
+      <if test="jfIgpjxgc != null" >
+        #{jfIgpjxgc,jdbcType=REAL},
+      </if>
+      <if test="jfVrcp != null" >
+        #{jfVrcp,jdbcType=REAL},
+      </if>
+      <if test="jfYoplaydz != null" >
+        #{jfYoplaydz,jdbcType=REAL},
+      </if>
+      <if test="jfKyqp != null" >
+        #{jfKyqp,jdbcType=REAL},
+      </if>
+      <if test="jfSpta != null" >
+        #{jfSpta,jdbcType=REAL},
+      </if>
+      <if test="jfVgqp != null" >
+        #{jfVgqp,jdbcType=REAL},
+      </if>
+      <if test="pGycp != null" >
+        #{pGycp,jdbcType=REAL},
+      </if>
+      <if test="jfGycp != null" >
+        #{jfGycp,jdbcType=REAL},
+      </if>
+      <if test="pPs != null" >
+        #{pPs,jdbcType=REAL},
+      </if>
+      <if test="jfPs != null" >
+        #{jfPs,jdbcType=REAL},
+      </if>
+      <if test="pNb != null" >
+        #{pNb,jdbcType=REAL},
+      </if>
+      <if test="jfNb != null" >
+        #{jfNb,jdbcType=REAL},
+      </if>
+      <if test="pLyqp != null" >
+        #{pLyqp,jdbcType=REAL},
+      </if>
+      <if test="jfLyqp != null" >
+        #{jfLyqp,jdbcType=REAL},
+      </if>
+      <if test="pJdb != null" >
+        #{pJdb,jdbcType=REAL},
+      </if>
+      <if test="jfJdb != null" >
+        #{jfJdb,jdbcType=REAL},
+      </if>
+      <if test="pSw != null" >
+        #{pSw,jdbcType=REAL},
+      </if>
+      <if test="jfSw != null" >
+        #{jfSw,jdbcType=REAL},
+      </if>
+      <if test="pIbc != null" >
+        #{pIbc,jdbcType=REAL},
+      </if>
+      <if test="jfIbc != null" >
+        #{jfIbc,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.tianxia.entity.v2.UserTypeEntity" >
+    update t_user_type
+    <set >
+      <if test="cid != null" >
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="typename != null" >
+        typename = #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rmk != null" >
+        rmk = #{rmk,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="isdefault != null" >
+        isDefault = #{isdefault,jdbcType=VARCHAR},
+      </if>
+      <if test="pCg != null" >
+        p_cg = #{pCg,jdbcType=REAL},
+      </if>
+      <if test="pAg != null" >
+        p_ag = #{pAg,jdbcType=REAL},
+      </if>
+      <if test="pShenbogame != null" >
+        p_shenbogame = #{pShenbogame,jdbcType=REAL},
+      </if>
+      <if test="pShenbo != null" >
+        p_shenbo = #{pShenbo,jdbcType=REAL},
+      </if>
+      <if test="pAb != null" >
+        p_ab = #{pAb,jdbcType=REAL},
+      </if>
+      <if test="pDs != null" >
+        p_ds = #{pDs,jdbcType=REAL},
+      </if>
+      <if test="pOg != null" >
+        p_og = #{pOg,jdbcType=REAL},
+      </if>
+      <if test="pBbin != null" >
+        p_bbin = #{pBbin,jdbcType=REAL},
+      </if>
+      <if test="pBbingame != null" >
+        p_bbingame = #{pBbingame,jdbcType=REAL},
+      </if>
+      <if test="pMg != null" >
+        p_mg = #{pMg,jdbcType=REAL},
+      </if>
+      <if test="pPt != null" >
+        p_pt = #{pPt,jdbcType=REAL},
+      </if>
+      <if test="pHaba != null" >
+        p_haba = #{pHaba,jdbcType=REAL},
+      </if>
+      <if test="pIg != null" >
+        p_ig = #{pIg,jdbcType=REAL},
+      </if>
+      <if test="pHg != null" >
+        p_hg = #{pHg,jdbcType=REAL},
+      </if>
+      <if test="pGgby != null" >
+        p_ggby = #{pGgby,jdbcType=REAL},
+      </if>
+      <if test="pBgvideo != null" >
+        p_bgvideo = #{pBgvideo,jdbcType=REAL},
+      </if>
+      <if test="pBglottery != null" >
+        p_bglottery = #{pBglottery,jdbcType=REAL},
+      </if>
+      <if test="bankcardId != null" >
+        bankCard_id = #{bankcardId,jdbcType=INTEGER},
+      </if>
+      <if test="alipayId != null" >
+        alipay_id = #{alipayId,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatId != null" >
+        wechat_id = #{wechatId,jdbcType=VARCHAR},
+      </if>
+      <if test="tenpayId != null" >
+        tenPay_id = #{tenpayId,jdbcType=VARCHAR},
+      </if>
+      <if test="onlinepayId != null" >
+        onlinepay_id = #{onlinepayId,jdbcType=VARCHAR},
+      </if>
+      <if test="integralRatio != null" >
+        integral_ratio = #{integralRatio,jdbcType=REAL},
+      </if>
+      <if test="cIntegralRatio != null" >
+        c_integral_ratio = #{cIntegralRatio,jdbcType=REAL},
+      </if>
+      <if test="pHkig != null" >
+        p_hkig = #{pHkig,jdbcType=REAL},
+      </if>
+      <if test="pVr != null" >
+        p_vr = #{pVr,jdbcType=REAL},
+      </if>
+      <if test="pJf != null" >
+        p_jf = #{pJf,jdbcType=REAL},
+      </if>
+      <if test="pJfcp != null" >
+        p_jfcp = #{pJfcp,jdbcType=REAL},
+      </if>
+      <if test="pYorplay != null" >
+        p_yorplay = #{pYorplay,jdbcType=REAL},
+      </if>
+      <if test="pKyqp != null" >
+        p_kyqp = #{pKyqp,jdbcType=REAL},
+      </if>
+      <if test="pSpta != null" >
+        p_spta = #{pSpta,jdbcType=REAL},
+      </if>
+      <if test="pVgqp != null" >
+        p_vgqp = #{pVgqp,jdbcType=REAL},
+      </if>
+      <if test="paymentChannel != null" >
+        payment_channel = #{paymentChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="jfAgsx != null" >
+        jf_agsx = #{jfAgsx,jdbcType=REAL},
+      </if>
+      <if test="jfAgby != null" >
+        jf_agby = #{jfAgby,jdbcType=REAL},
+      </if>
+      <if test="jfBbsx != null" >
+        jf_bbsx = #{jfBbsx,jdbcType=REAL},
+      </if>
+      <if test="jfBbdz != null" >
+        jf_bbdz = #{jfBbdz,jdbcType=REAL},
+      </if>
+      <if test="jfCgsx != null" >
+        jf_cgsx = #{jfCgsx,jdbcType=REAL},
+      </if>
+      <if test="jfDssx != null" >
+        jf_dssx = #{jfDssx,jdbcType=REAL},
+      </if>
+      <if test="jfGgby != null" >
+        jf_ggby = #{jfGgby,jdbcType=REAL},
+      </if>
+      <if test="jfHbdz != null" >
+        jf_hbdz = #{jfHbdz,jdbcType=REAL},
+      </if>
+      <if test="jfHgty != null" >
+        jf_hgty = #{jfHgty,jdbcType=REAL},
+      </if>
+      <if test="jfIgctc != null" >
+        jf_igctc = #{jfIgctc,jdbcType=REAL},
+      </if>
+      <if test="jfMgdz != null" >
+        jf_mgdz = #{jfMgdz,jdbcType=REAL},
+      </if>
+      <if test="jfObsx != null" >
+        jf_obsx = #{jfObsx,jdbcType=REAL},
+      </if>
+      <if test="jfOgsx != null" >
+        jf_ogsx = #{jfOgsx,jdbcType=REAL},
+      </if>
+      <if test="jfPtdz != null" >
+        jf_ptdz = #{jfPtdz,jdbcType=REAL},
+      </if>
+      <if test="jfSbsx != null" >
+        jf_sbsx = #{jfSbsx,jdbcType=REAL},
+      </if>
+      <if test="jfSbdz != null" >
+        jf_sbdz = #{jfSbdz,jdbcType=REAL},
+      </if>
+      <if test="jfIgxgc != null" >
+        jf_igxgc = #{jfIgxgc,jdbcType=REAL},
+      </if>
+      <if test="jfIgpjctc != null" >
+        jf_igpjctc = #{jfIgpjctc,jdbcType=REAL},
+      </if>
+      <if test="jfIgpjxgc != null" >
+        jf_igpjxgc = #{jfIgpjxgc,jdbcType=REAL},
+      </if>
+      <if test="jfVrcp != null" >
+        jf_vrcp = #{jfVrcp,jdbcType=REAL},
+      </if>
+      <if test="jfYoplaydz != null" >
+        jf_yoplaydz = #{jfYoplaydz,jdbcType=REAL},
+      </if>
+      <if test="jfKyqp != null" >
+        jf_kyqp = #{jfKyqp,jdbcType=REAL},
+      </if>
+      <if test="jfSpta != null" >
+        jf_spta = #{jfSpta,jdbcType=REAL},
+      </if>
+      <if test="jfVgqp != null" >
+        jf_vgqp = #{jfVgqp,jdbcType=REAL},
+      </if>
+      <if test="pGycp != null" >
+        p_gycp = #{pGycp,jdbcType=REAL},
+      </if>
+      <if test="jfGycp != null" >
+        jf_gycp = #{jfGycp,jdbcType=REAL},
+      </if>
+      <if test="pPs != null" >
+        p_ps = #{pPs,jdbcType=REAL},
+      </if>
+      <if test="jfPs != null" >
+        jf_ps = #{jfPs,jdbcType=REAL},
+      </if>
+      <if test="pNb != null" >
+        p_nb = #{pNb,jdbcType=REAL},
+      </if>
+      <if test="jfNb != null" >
+        jf_nb = #{jfNb,jdbcType=REAL},
+      </if>
+      <if test="pLyqp != null" >
+        p_lyqp = #{pLyqp,jdbcType=REAL},
+      </if>
+      <if test="jfLyqp != null" >
+        jf_lyqp = #{jfLyqp,jdbcType=REAL},
+      </if>
+      <if test="pJdb != null" >
+        p_jdb = #{pJdb,jdbcType=REAL},
+      </if>
+      <if test="jfJdb != null" >
+        jf_jdb = #{jfJdb,jdbcType=REAL},
+      </if>
+      <if test="pSw != null" >
+        p_sw = #{pSw,jdbcType=REAL},
+      </if>
+      <if test="jfSw != null" >
+        jf_sw = #{jfSw,jdbcType=REAL},
+      </if>
+      <if test="pIbc != null" >
+        p_ibc = #{pIbc,jdbcType=REAL},
+      </if>
+      <if test="jfIbc != null" >
+        jf_ibc = #{jfIbc,jdbcType=REAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.tianxia.entity.v2.UserTypeEntity" >
+    update t_user_type
+    set cid = #{cid,jdbcType=INTEGER},
+      typename = #{typename,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      rmk = #{rmk,jdbcType=VARCHAR},
+      status = #{status,jdbcType=CHAR},
+      isDefault = #{isdefault,jdbcType=VARCHAR},
+      p_cg = #{pCg,jdbcType=REAL},
+      p_ag = #{pAg,jdbcType=REAL},
+      p_shenbogame = #{pShenbogame,jdbcType=REAL},
+      p_shenbo = #{pShenbo,jdbcType=REAL},
+      p_ab = #{pAb,jdbcType=REAL},
+      p_ds = #{pDs,jdbcType=REAL},
+      p_og = #{pOg,jdbcType=REAL},
+      p_bbin = #{pBbin,jdbcType=REAL},
+      p_bbingame = #{pBbingame,jdbcType=REAL},
+      p_mg = #{pMg,jdbcType=REAL},
+      p_pt = #{pPt,jdbcType=REAL},
+      p_haba = #{pHaba,jdbcType=REAL},
+      p_ig = #{pIg,jdbcType=REAL},
+      p_hg = #{pHg,jdbcType=REAL},
+      p_ggby = #{pGgby,jdbcType=REAL},
+      p_bgvideo = #{pBgvideo,jdbcType=REAL},
+      p_bglottery = #{pBglottery,jdbcType=REAL},
+      bankCard_id = #{bankcardId,jdbcType=INTEGER},
+      alipay_id = #{alipayId,jdbcType=VARCHAR},
+      wechat_id = #{wechatId,jdbcType=VARCHAR},
+      tenPay_id = #{tenpayId,jdbcType=VARCHAR},
+      onlinepay_id = #{onlinepayId,jdbcType=VARCHAR},
+      integral_ratio = #{integralRatio,jdbcType=REAL},
+      c_integral_ratio = #{cIntegralRatio,jdbcType=REAL},
+      p_hkig = #{pHkig,jdbcType=REAL},
+      p_vr = #{pVr,jdbcType=REAL},
+      p_jf = #{pJf,jdbcType=REAL},
+      p_jfcp = #{pJfcp,jdbcType=REAL},
+      p_yorplay = #{pYorplay,jdbcType=REAL},
+      p_kyqp = #{pKyqp,jdbcType=REAL},
+      p_spta = #{pSpta,jdbcType=REAL},
+      p_vgqp = #{pVgqp,jdbcType=REAL},
+      payment_channel = #{paymentChannel,jdbcType=VARCHAR},
+      jf_agsx = #{jfAgsx,jdbcType=REAL},
+      jf_agby = #{jfAgby,jdbcType=REAL},
+      jf_bbsx = #{jfBbsx,jdbcType=REAL},
+      jf_bbdz = #{jfBbdz,jdbcType=REAL},
+      jf_cgsx = #{jfCgsx,jdbcType=REAL},
+      jf_dssx = #{jfDssx,jdbcType=REAL},
+      jf_ggby = #{jfGgby,jdbcType=REAL},
+      jf_hbdz = #{jfHbdz,jdbcType=REAL},
+      jf_hgty = #{jfHgty,jdbcType=REAL},
+      jf_igctc = #{jfIgctc,jdbcType=REAL},
+      jf_mgdz = #{jfMgdz,jdbcType=REAL},
+      jf_obsx = #{jfObsx,jdbcType=REAL},
+      jf_ogsx = #{jfOgsx,jdbcType=REAL},
+      jf_ptdz = #{jfPtdz,jdbcType=REAL},
+      jf_sbsx = #{jfSbsx,jdbcType=REAL},
+      jf_sbdz = #{jfSbdz,jdbcType=REAL},
+      jf_igxgc = #{jfIgxgc,jdbcType=REAL},
+      jf_igpjctc = #{jfIgpjctc,jdbcType=REAL},
+      jf_igpjxgc = #{jfIgpjxgc,jdbcType=REAL},
+      jf_vrcp = #{jfVrcp,jdbcType=REAL},
+      jf_yoplaydz = #{jfYoplaydz,jdbcType=REAL},
+      jf_kyqp = #{jfKyqp,jdbcType=REAL},
+      jf_spta = #{jfSpta,jdbcType=REAL},
+      jf_vgqp = #{jfVgqp,jdbcType=REAL},
+      p_gycp = #{pGycp,jdbcType=REAL},
+      jf_gycp = #{jfGycp,jdbcType=REAL},
+      p_ps = #{pPs,jdbcType=REAL},
+      jf_ps = #{jfPs,jdbcType=REAL},
+      p_nb = #{pNb,jdbcType=REAL},
+      jf_nb = #{jfNb,jdbcType=REAL},
+      p_lyqp = #{pLyqp,jdbcType=REAL},
+      jf_lyqp = #{jfLyqp,jdbcType=REAL},
+      p_jdb = #{pJdb,jdbcType=REAL},
+      jf_jdb = #{jfJdb,jdbcType=REAL},
+      p_sw = #{pSw,jdbcType=REAL},
+      jf_sw = #{jfSw,jdbcType=REAL},
+      p_ibc = #{pIbc,jdbcType=REAL},
+      jf_ibc = #{jfIbc,jdbcType=REAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectTypeIdByCagent" resultType="Integer">
+    select
+      a.id as typeId
+    from t_user_type a left join t_cagent b on
+    a.cid=b.id
+    where
+    b.cagent=#{cagent} and a.isDefault=0 group by cid
+  </select>
+
+  <!-- 用户可用支付渠道 -->
+  <select id="getPaychannelByUser" parameterType="java.lang.String"
+          resultType="java.lang.String">
+			SELECT
+     payment_channel
+		FROM
+			t_user_type tut
+		 WHERE id=(SELECT t_user.type_id FROM t_user WHERE uid = #{uid})
+  </select>
+
+ 
+  <select id="getOfflineQrCodeByUser" resultMap="BaseResultMap">
+	SELECT
+		ut.alipay_id as alipayId,ut.wechat_id as wechatId,ut.tenPay_id as tenpayId
+	FROM 
+	t_user_type ut LEFT JOIN t_user u ON ut.id=u.type_id where u.uid=#{uid}
+  </select>	
+
+  <select id="getUserTypeId" resultType="Integer">
+  	SELECT 
+  		a.id as typeid 
+  	FROM t_user_type a 
+  	LEFT JOIN t_cagent b 
+  	ON a.cid=b.id where
+	b.cagent=#{cagent} and a.isDefault=0 group by cid
+  </select>
+</mapper>

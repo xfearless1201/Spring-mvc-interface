@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans      
+                        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd      
+                        http://www.springframework.org/schema/context      
+                        http://www.springframework.org/schema/context/spring-context-4.2.xsd      
+                        http://www.springframework.org/schema/mvc      
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd  
+                        http://www.springframework.org/schema/cache   
+                        http://www.springframework.org/schema/cache/spring-cache-4.2.xsd">
+    
+	<!-- 引入配置文件 -->
+	<context:property-placeholder location="classpath:conf/*.properties" />
+    <bean id="producer" class="com.cn.tianxia.mq.producer.impl.GameTransferProducerImpl" init-method="afterPropertiesSet" destroy-method="destroy">
+        <property name="producerGroup" value="${test.group}"></property>
+        <property name="namesrvAddr" value="${rocketmq.namesrvAddr}"></property>
+        <property name="retryAnotherBrokerWhenNotStoreOK" value="false"></property>
+    </bean>
+</beans>

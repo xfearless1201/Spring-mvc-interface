@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans      
+                        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd      
+                        http://www.springframework.org/schema/context      
+                        http://www.springframework.org/schema/context/spring-context-4.2.xsd      
+                        http://www.springframework.org/schema/mvc      
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd  
+                        http://www.springframework.org/schema/cache   
+                        http://www.springframework.org/schema/cache/spring-cache-4.2.xsd">
+    
+	<!-- 引入配置文件 -->
+	<context:property-placeholder location="classpath:conf/*.properties" />
+    <bean id="consumer" class="com.cn.tianxia.mq.consumer.impl.RocketConsumerImpl" init-method="afterPropertiesSet" destroy-method="destroy">
+        <property name="namesrvAddr" value="${rocketmq.namesrvAddr}" />
+        <property name="consumerGroup" value="${test.group}" />
+        <!-- 消费方式：BROADCASTING 广播消费，CLUSTERING 集群消费 -->
+        <property name="messageModel" value="CLUSTERING" />
+        <!-- CONCURRENTLY 无序消费  ORDERLY 有序消费 -->
+        <property name="messageListener" value="CONCURRENTLY" />
+        <property name="handlermap">
+            <map>
+                <entry key="TEST_TOPIC">
+                    <bean class="com.cn.tianxia.mq.consumer.impl.GameTransferConsumer">
+                        <property name="classTypeName" value="com.cn.tianxia.mq.vo.GameTransferVO"></property>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>	
+</beans>
